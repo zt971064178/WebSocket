@@ -56,6 +56,12 @@
 		<version>${spring.version}</version>
 	</dependency>
 	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-websocket</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
 	<!-- @ResponseBody把对象转换成json格式 -->
     <dependency>
 	    <groupId>com.fasterxml.jackson.core</groupId>
@@ -147,6 +153,13 @@
   		<groupId>javax.servlet</groupId>
   		<artifactId>jstl</artifactId>
   		<version>${jstl.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.eclipse.jetty.websocket</groupId>
+	    <artifactId>websocket-server</artifactId>
+	    <version>9.2.18.v20160721</version>
+  		<scope>provided</scope>
 	</dependency>
   
     <dependency>
