@@ -1,0 +1,251 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn.itcast.websocket</groupId>
+  <artifactId>websocket-start01</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>websocket-start01 Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>4.3.2.RELEASE</spring.version>
+    <log4j.version>1.2.17</log4j.version>
+    <jackson.version>2.8.1</jackson.version>
+    <jsp.version>2.2.1-b03</jsp.version>
+    <aspectj.version>1.8.9</aspectj.version>
+    <slf4j.version>1.7.21</slf4j.version>
+    <jstl.version>1.2</jstl.version>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>${log4j.version}</version>
+  	</dependency>
+  	
+  	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework.data</groupId>
+	    <artifactId>spring-data-redis</artifactId>
+	    <version>1.7.2.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-websocket</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-messaging</artifactId>
+	    <version>${spring.version}</version>
+	</dependency>
+	
+	<!-- @ResponseBody把对象转换成json格式 -->
+    <dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-core</artifactId>
+	    <version>${jackson.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-annotations</artifactId>
+	    <version>${jackson.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>${jackson.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.fasterxml.jackson.dataformat</groupId>
+	    <artifactId>jackson-dataformat-xml</artifactId>
+	   	<version>${jackson.version}</version>
+	</dependency>
+    
+	<dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>fastjson</artifactId>
+	    <version>1.2.16</version>
+	</dependency>
+  	
+  	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjrt</artifactId>
+	    <version>${aspectj.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>1.8.9</version>
+	</dependency>
+	
+	<dependency>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>slf4j-api</artifactId>
+  		<version>${slf4j.version}</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>log4j</groupId>
+  		<artifactId>log4j</artifactId>
+  		<version>1.2.17</version>
+  	</dependency>
+  	
+  	<dependency>
+	    <groupId>commons-io</groupId>
+	    <artifactId>commons-io</artifactId>
+	    <version>2.5</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-pool2</artifactId>
+	    <version>2.4.2</version>
+	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>jcl-over-slf4j</artifactId>
+  		<version>${slf4j.version}</version>
+	</dependency>
+	
+	<dependency>
+  		<groupId>javax</groupId>
+  		<artifactId>javaee-web-api</artifactId>
+  		<version>7.0</version>
+  		<scope>provided</scope>
+	</dependency>
+	
+	<dependency>
+  		<groupId>javax.servlet.jsp</groupId>
+  		<artifactId>jsp-api</artifactId>
+  		<version>${jsp.version}</version>
+  		<scope>provided</scope>
+	</dependency>
+	
+	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>jstl</artifactId>
+  		<version>${jstl.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.eclipse.jetty.websocket</groupId>
+	    <artifactId>websocket-server</artifactId>
+	    <version>9.2.18.v20160721</version>
+  		<scope>provided</scope>
+	</dependency>
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>websocket-start01</finalName>
+    <plugins>
+    	<!--jetty 插件，mvn jetty:run -->
+		<plugin>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-maven-plugin</artifactId>
+			<version>9.3.7.v20160115</version>
+			<configuration>
+				<webApp>
+					<contextPath>/</contextPath>
+					<descriptor>${basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
+				</webApp>
+				<stopKey>exit</stopKey>
+				<stopPort>9091</stopPort>
+				<webAppSourceDirectory>${project.basedir}/src/main/webapp</webAppSourceDirectory>
+				<scanIntervalSeconds>0</scanIntervalSeconds>
+				<httpConnector>
+					<port>8080</port>
+				</httpConnector>
+			</configuration>
+		</plugin>
+    
+    	<plugin>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-maven-plugin</artifactId>
+			<version>9.2.18.v20160721</version>
+			<configuration>
+				<scanIntervalSeconds>3</scanIntervalSeconds>
+				<stopKey>foo</stopKey>
+				<stopPort>9999</stopPort>
+				<contextPath>/</contextPath>
+				<connectors>
+					<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+						<port>80</port>
+					</connector>
+				</connectors>
+				<systemProperties>
+			      <systemProperty>
+			        <name>org.eclipse.jetty.util.URI.charset</name>
+			        <value>UTF-8</value>
+			      </systemProperty>
+			    </systemProperties>
+			    <!-- <webAppConfig>
+			      <defaultsDescriptor>src/main/profiles/dev/webdefault.xml</defaultsDescriptor>
+			    </webAppConfig> -->
+			</configuration>
+		</plugin>
+		
+		<!-- Maven Tomcat Plugin -->
+		<plugin>
+		  <groupId>org.apache.tomcat.maven</groupId>
+		  <artifactId>tomcat7-maven-plugin</artifactId>
+		  <version>2.2</version>
+		  <configuration>
+		    <!--Deploy to server-->
+		    <url>http://localhost:8080/manager/text</url>
+		    <server>Tomcat8</server>
+		    <username>admin</username>
+		    <password>admin</password>
+		    <path>/</path>
+		    <port>80</port>
+		    <uriEncoding>UTF-8</uriEncoding>
+		    <warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
+		  </configuration>
+		</plugin>
+	    
+     	<plugin>  
+            <groupId>org.apache.maven.plugins</groupId>  
+            <artifactId>maven-war-plugin</artifactId>  
+            <configuration>  
+                <failOnMissingWebXml>false</failOnMissingWebXml>  
+            </configuration>  
+        </plugin>  
+        
+        <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<configuration>
+				<skip>true</skip>
+				<testFailureIgnore>true</testFailureIgnore>
+			</configuration>
+		</plugin>
+	</plugins>
+  </build>
+</project>
