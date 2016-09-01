@@ -39,8 +39,9 @@
 	    
 	    function startServer() {
         	var url = "/webServer" ;
-        	//var socket = new SockJS(url);
-        	var socket = new WebSocket(url);
+        	// 两种方式连接
+        	var socket = new SockJS(url);
+        	// var socket = new WebSocket("ws://192.168.1.116/noWebServer");
         	stompClient = Stomp.over(socket);
 	        
         	stompClient.connect({}, function(frame) {
@@ -126,4 +127,27 @@
 	    }
 	</script>
 </body>
+
+<!-- 判断浏览器条件
+	<script>
+            var websocket;
+            if ('WebSocket' in window) {
+                websocket = new WebSocket("ws://localhost:8080/Origami/webSocketServer");
+            } else if ('MozWebSocket' in window) {
+                websocket = new MozWebSocket("ws://localhost:8080/Origami/webSocketServer");
+            } else {
+                websocket = new SockJS("http://localhost:8080/Origami/sockjs/webSocketServer");
+            }
+            websocket.onopen = function (evnt) {
+            };
+            websocket.onmessage = function (evnt) {
+                $("#msgcount").html("(<font color='red'>"+evnt.data+"</font>)")
+            };
+            websocket.onerror = function (evnt) {
+            };
+            websocket.onclose = function (evnt) {
+            }
+
+        </script>
+ -->
 </html>

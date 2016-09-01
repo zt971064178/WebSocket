@@ -5,6 +5,10 @@ import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
+
+import cn.itcast.websocket.handler.MyWebSocketHandler;
+import cn.itcast.websocket.interceptor.WebSocketHandshakeInterceptor;
 
 /**
  * ClassName: WebSocketConfig  
@@ -30,8 +34,21 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
 		// 这个和客户端创建连接时的url有关，后面在客户端的代码中可以看到。
 		// setAllowedOrigins(“*”)处理跨域访问问题。 
-		registry.addEndpoint("/webServer")
-			.setAllowedOrigins("*")
+		/*registry.addEndpoint("/webServer")
 			.withSockJS() ;
+		
+		registry.addEndpoint("/noWebServer")
+			.setAllowedOrigins("*");*/
+		
+		registry.addEndpoint("/webServer")
+		.setHandshakeHandler(new MyWebSocketHandler())
+		.setAllowedOrigins("*")
+		.addInterceptors(new WebSocketHandshakeInterceptor())
+		.withSockJS() ;
+	
+		registry.addEndpoint("/noWebServer")
+			.setHandshakeHandler(new DefaultHandshakeHandler())
+			.addInterceptors(new WebSocketHandshakeInterceptor())
+			.setAllowedOrigins("*");
 	}
 }
